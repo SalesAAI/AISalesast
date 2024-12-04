@@ -39,6 +39,45 @@ document.addEventListener('DOMContentLoaded', function() {
         newCloseBtn.addEventListener('click', () => {
             modal.style.display = 'none';
         });
+
+        // Add event listener to calculate button
+        const calculateBtn = modalContent.querySelector('.calculate-result');
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', () => {
+                calculateResult(type);
+            });
+        }
+    }
+
+    // Calculate results directly in browser
+    function calculateResult(type) {
+        switch(type) {
+            case 'arv':
+                const currentValue = parseFloat(document.getElementById('currentValue').value) || 0;
+                const repairCosts = parseFloat(document.getElementById('repairCosts').value) || 0;
+                const appreciationRate = parseFloat(document.getElementById('appreciationRate').value) || 0;
+                
+                const appreciationMultiplier = 1 + (appreciationRate / 100);
+                const arv = (currentValue + repairCosts) * appreciationMultiplier;
+                const potentialProfit = arv - (currentValue + repairCosts);
+
+                document.getElementById('arvResult').textContent = 
+                    `After Repair Value: $${arv.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+                document.getElementById('potentialProfit').textContent = 
+                    `Potential Profit: $${potentialProfit.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+                break;
+
+            case 'mao':
+                const arvValue = parseFloat(document.getElementById('arvValue').value) || 0;
+                const maoRepairCosts = parseFloat(document.getElementById('maoRepairCosts').value) || 0;
+                const mao = (arvValue * 0.70) - maoRepairCosts;
+
+                document.getElementById('maoResult').textContent = 
+                    `Maximum Allowable Offer: $${mao.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+                break;
+
+            // Add other calculator cases similarly
+        }
     }
 
     // Create calculator form
@@ -70,6 +109,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
                 break;
+
+            case 'mao':
+                form.innerHTML = `
+                    <h2>Maximum Allowable Offer (MAO) Calculator</h2>
+                    <div class="input-group">
+                        <label for="arvValue">After Repair Value ($)</label>
+                        <input type="number" id="arvValue" placeholder="Enter ARV" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="maoRepairCosts">Repair Costs ($)</label>
+                        <input type="number" id="maoRepairCosts" placeholder="Enter repair costs" min="0" required>
+                    </div>
+                    <button class="calculate-result">Calculate MAO</button>
+                    <div class="result">
+                        <h3>Results:</h3>
+                        <p id="maoResult">Maximum Allowable Offer: $0</p>
+                    </div>
+                `;
+                break;
+
             // Add other calculator forms similarly
         }
 
@@ -83,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Function to remove active class from all items
+    // Navigation functionality
     function removeActiveClass(items) {
         items.forEach(item => {
             item.classList.remove('active');
@@ -91,15 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to show/hide sections
     function toggleSections(section = 'default') {
-        // Hide all sections first
         templatesSection.style.display = 'none';
         homeSellerSection.style.display = 'none';
         investorsSection.style.display = 'none';
         homeBuyerSection.style.display = 'none';
 
-        // Show appropriate sections based on parameter
         switch(section) {
             case 'seller':
                 homeSellerSection.style.display = 'block';
@@ -124,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Handle Dashboard click
             if (this.textContent.includes('Dashboard')) {
                 removeActiveClass(navItems);
                 removeActiveClass(subItems);
@@ -132,8 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 toggleSections('dashboard');
                 const mainTitle = document.querySelector('.header-content h1');
                 const mainDesc = document.querySelector('.header-content p');
-                mainTitle.textContent = 'My Projects';
-                mainDesc.textContent = "Let's get started and take the first step towards becoming a more productive and organized you!";
+                mainTitle.textContent = 'Real Estate Calculators';
+                mainDesc.textContent = 'Essential tools for real estate analysis and decision making';
                 return;
             }
             
@@ -207,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle Private Projects button
+    // UI element handlers
     const privateProjectsBtn = document.querySelector('.private-projects');
     if (privateProjectsBtn) {
         privateProjectsBtn.addEventListener('click', function() {
@@ -215,7 +270,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Handle notification bell
     const notificationBell = document.querySelector('.notification');
     if (notificationBell) {
         notificationBell.addEventListener('click', function() {
@@ -223,7 +277,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Handle user avatar
     const userAvatar = document.querySelector('.user-avatar');
     if (userAvatar) {
         userAvatar.addEventListener('click', function() {
@@ -231,6 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Show calculators by default when page loads
+    // Show calculators by default
     toggleSections('dashboard');
 });
