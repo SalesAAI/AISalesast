@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Calculator Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Add meta tags for mobile optimization -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+    <!-- Previous HTML content remains the same -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="menu">
+                <h2>MENU</h2>
+                <nav>
+                    <a href="#" class="nav-item active">
+                        <span class="icon">🏠</span>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">📁</span>
+                        Conversations
+                    </a>
+                    <div class="sub-menu" style="display: none;">
+                        <a href="#" class="sub-item">Home Seller</a>
+                        <a href="#" class="sub-item">Investors</a>
+                        <a href="#" class="sub-item">Home Buyer</a>
+                    </div>
+                    <a href="#" class="nav-item">
+                        <span class="icon">📊</span>
+                        Statistics
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">👥</span>
+                        Contacts
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">📅</span>
+                        Calendar
+                    </a>
+                </nav>
+            </div>
+            <div class="general">
+                <h2>GENERAL</h2>
+                <nav>
+                    <a href="#" class="nav-item">
+                        <span class="icon">⚙️</span>
+                        Settings
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">❓</span>
+                        Support
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">↪️</span>
+                        Log out
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div class="header-content">
+                    <h1>Real Estate Calculators</h1>
+                    <p>Essential tools for real estate analysis and decision making</p>
+                </div>
+                <div class="header-actions">
+                    <button class="private-projects">🔒 Private Projects</button>
+                    <div class="user-actions">
+                        <span class="notification">🔔</span>
+                        <span class="user-avatar">👤</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Templates Section with Calculators -->
+            <section id="templates" class="templates">
+                <h2>Real Estate Calculators</h2>
+                <div class="template-grid">
+                    <div class="template-card pink calculator-card" data-calculator="arv">
+                        <span class="icon">📝</span>
+                        <h3>ARV</h3>
+                        <p>(After Repair Value) is the estimated market value of a property after all repairs and renovations are completed.</p>
+                    </div>
+                    <div class="template-card blue calculator-card" data-calculator="mao">
+                        <span class="icon">💰</span>
+                        <h3>MAO</h3>
+                        <p>Maximum Allowable Offer: MAO = (ARV × 70%) - Repair Costs. This determines the highest price an investor should pay.</p>
+                    </div>
+                    <div class="template-card orange calculator-card" data-calculator="coc">
+                        <span class="icon">💵</span>
+                        <h3>CoC</h3>
+                        <p>Cash-on-Cash Return: CoC = (Annual Cash Flow / Cash Invested) × 100. Measures the return on actual cash invested.</p>
+                    </div>
+                    <div class="template-card green calculator-card" data-calculator="capRate">
+                        <span class="icon">📊</span>
+                        <h3>Cap Rate</h3>
+                        <p>Capitalization Rate: Cap Rate = (Net Operating Income / Property Value) × 100. Used to evaluate profitability.</p>
+                    </div>
+                    <div class="template-card purple calculator-card" data-calculator="grm">
+                        <span class="icon">🏢</span>
+                        <h3>GRM</h3>
+                        <p>Gross Rent Multiplier: GRM = Property Price / Gross Annual Rental Income. Helps compare rental properties.</p>
+                    </div>
+                    <div class="template-card pink calculator-card" data-calculator="dscr">
+                        <span class="icon">📈</span>
+                        <h3>DSCR</h3>
+                        <p>Debt Service Coverage Ratio: DSCR = Net Operating Income / Annual Debt Payments. Used by lenders to assess coverage.</p>
+                    </div>
+                    <div class="template-card blue calculator-card" data-calculator="ltv">
+                        <span class="icon">🏦</span>
+                        <h3>LTV</h3>
+                        <p>Loan-to-Value Ratio: LTV = (Loan Amount / Property Value) × 100. Measures lending risk; lower is better.</p>
+                    </div>
+                    <div class="template-card orange calculator-card" data-calculator="ber">
+                        <span class="icon">⚖️</span>
+                        <h3>BER</h3>
+                        <p>Break-Even Ratio: BER = (Operating Expenses + Debt Payments) / Gross Income × 100. Shows income needed for expenses.</p>
+                    </div>
+                    <div class="template-card green calculator-card" data-calculator="roi">
+                        <span class="icon">📊</span>
+                        <h3>ROI</h3>
+                        <p>Return on Investment: ROI = (Net Profit / Total Investment) × 100. A general measure of profitability.</p>
+                    </div>
+                    <div class="template-card purple calculator-card" data-calculator="vacancyRate">
+                        <span class="icon">🏠</span>
+                        <h3>Vacancy Rate</h3>
+                        <p>Vacancy Rate = (Vacant Units / Total Units) × 100. Helps evaluate potential income loss in rental properties.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Previous sections remain the same -->
+            <!-- Home Seller section -->
+            <!-- Investor section -->
+            <!-- Home Buyer section -->
+        </main>
+    </div>
+
+    <!-- Calculator Modal -->
+    <div id="calculatorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <!-- Calculator forms will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
