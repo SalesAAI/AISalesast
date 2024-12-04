@@ -52,39 +52,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h2>After Repair Value (ARV) Calculator</h2>
                     <div class="input-group">
                         <label for="currentValue">Current Property Value ($)</label>
-                        <input type="number" id="currentValue" placeholder="Enter current value">
+                        <input type="number" id="currentValue" placeholder="Enter current value" min="0" required>
                     </div>
                     <div class="input-group">
                         <label for="repairCosts">Estimated Repair Costs ($)</label>
-                        <input type="number" id="repairCosts" placeholder="Enter repair costs">
+                        <input type="number" id="repairCosts" placeholder="Enter repair costs" min="0" required>
                     </div>
                     <div class="input-group">
                         <label for="appreciationRate">Expected Appreciation Rate (%)</label>
-                        <input type="number" id="appreciationRate" placeholder="Enter appreciation rate">
+                        <input type="number" id="appreciationRate" placeholder="Enter appreciation rate" min="0" max="100" required>
                     </div>
-                    <button class="calculate-result" onclick="calculateARV()">Calculate ARV</button>
+                    <button class="calculate-result">Calculate ARV</button>
                     <div class="result">
                         <h3>Results:</h3>
                         <p id="arvResult">After Repair Value: $0</p>
                         <p id="potentialProfit">Potential Profit: $0</p>
-                    </div>
-                `;
-                break;
-            case 'mao':
-                form.innerHTML = `
-                    <h2>Maximum Allowable Offer (MAO) Calculator</h2>
-                    <div class="input-group">
-                        <label for="arvValue">After Repair Value ($)</label>
-                        <input type="number" id="arvValue" placeholder="Enter ARV">
-                    </div>
-                    <div class="input-group">
-                        <label for="repairCosts">Repair Costs ($)</label>
-                        <input type="number" id="repairCosts" placeholder="Enter repair costs">
-                    </div>
-                    <button class="calculate-result" onclick="calculateMAO()">Calculate MAO</button>
-                    <div class="result">
-                        <h3>Results:</h3>
-                        <p id="maoResult">Maximum Allowable Offer: $0</p>
                     </div>
                 `;
                 break;
@@ -101,59 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Calculator Functions
-    window.calculateARV = async function() {
-        const currentValue = parseFloat(document.getElementById('currentValue').value) || 0;
-        const repairCosts = parseFloat(document.getElementById('repairCosts').value) || 0;
-        const appreciationRate = parseFloat(document.getElementById('appreciationRate').value) || 0;
-
-        try {
-            const response = await fetch('http://localhost:5000/calculate/arv', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    currentValue,
-                    repairCosts,
-                    appreciationRate
-                })
-            });
-
-            const data = await response.json();
-            document.getElementById('arvResult').textContent = 
-                `After Repair Value: $${data.arv.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
-            document.getElementById('potentialProfit').textContent = 
-                `Potential Profit: $${data.potentialProfit.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
-        } catch (error) {
-            console.error('Error calculating ARV:', error);
-            alert('Error calculating ARV. Please try again.');
-        }
-    };
-
-    window.calculateMAO = async function() {
-        const arv = parseFloat(document.getElementById('arvValue').value) || 0;
-        const repairCosts = parseFloat(document.getElementById('repairCosts').value) || 0;
-
-        try {
-            const response = await fetch('http://localhost:5000/calculate/mao', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ arv, repairCosts })
-            });
-
-            const data = await response.json();
-            document.getElementById('maoResult').textContent = 
-                `Maximum Allowable Offer: $${data.mao.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
-        } catch (error) {
-            console.error('Error calculating MAO:', error);
-            alert('Error calculating MAO. Please try again.');
-        }
-    };
-
-    // Previous navigation functionality
+    // Function to remove active class from all items
     function removeActiveClass(items) {
         items.forEach(item => {
             item.classList.remove('active');
@@ -161,12 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Function to show/hide sections
     function toggleSections(section = 'default') {
+        // Hide all sections first
         templatesSection.style.display = 'none';
         homeSellerSection.style.display = 'none';
         investorsSection.style.display = 'none';
         homeBuyerSection.style.display = 'none';
 
+        // Show appropriate sections based on parameter
         switch(section) {
             case 'seller':
                 homeSellerSection.style.display = 'block';
@@ -176,6 +109,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 'buyer':
                 homeBuyerSection.style.display = 'block';
+                break;
+            case 'dashboard':
+                templatesSection.style.display = 'block';
                 break;
             default:
                 templatesSection.style.display = 'block';
@@ -188,6 +124,19 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', function(e) {
             e.preventDefault();
             
+            // Handle Dashboard click
+            if (this.textContent.includes('Dashboard')) {
+                removeActiveClass(navItems);
+                removeActiveClass(subItems);
+                this.classList.add('active');
+                toggleSections('dashboard');
+                const mainTitle = document.querySelector('.header-content h1');
+                const mainDesc = document.querySelector('.header-content p');
+                mainTitle.textContent = 'My Projects';
+                mainDesc.textContent = "Let's get started and take the first step towards becoming a more productive and organized you!";
+                return;
+            }
+            
             if (!this.textContent.includes('Dashboard')) {
                 const nonDashboardItems = Array.from(navItems).filter(item => !item.textContent.includes('Dashboard'));
                 removeActiveClass(nonDashboardItems);
@@ -199,14 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (subMenu && subMenu.classList.contains('sub-menu')) {
                     subMenu.style.display = subMenu.style.display === 'none' ? 'block' : 'none';
                 }
-            }
-
-            if (!this.textContent.includes('Conversations')) {
-                toggleSections('default');
-                const mainTitle = document.querySelector('.header-content h1');
-                const mainDesc = document.querySelector('.header-content p');
-                mainTitle.textContent = 'My Projects';
-                mainDesc.textContent = "Let's get started and take the first step towards becoming a more productive and organized you!";
             }
 
             // Handle specific button clicks
@@ -289,4 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('User profile menu will open here');
         });
     }
+
+    // Show calculators by default when page loads
+    toggleSections('dashboard');
 });

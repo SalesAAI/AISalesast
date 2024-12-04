@@ -44,6 +44,8 @@ body {
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .nav-item {
@@ -55,6 +57,7 @@ body {
     border-radius: 8px;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+    transition: all 0.2s ease;
 }
 
 /* Special Dashboard Style */
@@ -76,6 +79,7 @@ body {
 
 .nav-item:not(.active):hover {
     background-color: var(--primary-bg);
+    transform: translateX(4px);
 }
 
 .nav-item.selected {
@@ -84,10 +88,15 @@ body {
 
 .nav-item .icon {
     margin-right: 0.75rem;
+    font-size: 1.1rem;
+    min-width: 24px;
+    text-align: center;
 }
 
 .sub-menu {
-    margin-left: 2rem;
+    margin-left: 2.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .sub-item {
@@ -97,10 +106,18 @@ body {
     color: var(--text-primary);
     margin-bottom: 0.25rem;
     font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+.sub-item:hover {
+    background-color: var(--primary-bg);
+    transform: translateX(4px);
 }
 
 .sub-item.active {
-    color: #4a4af4;
+    color: var(--dashboard-bg);
+    font-weight: 500;
 }
 
 /* Main Content Styles */
@@ -140,12 +157,27 @@ body {
     background: white;
     cursor: pointer;
     font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.private-projects:hover {
+    background-color: var(--primary-bg);
+    transform: translateY(-1px);
 }
 
 .user-actions {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.notification, .user-avatar {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.notification:hover, .user-avatar:hover {
+    transform: translateY(-1px);
 }
 
 /* Templates Section */
@@ -295,7 +327,7 @@ body {
     margin: 2rem auto;
     padding: 2rem;
     width: 90%;
-    max-width: 600px;
+    max-width: 500px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
@@ -307,6 +339,101 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+}
+
+/* Calculator Form Styles */
+.calculator-form {
+    padding: 1rem 0;
+}
+
+.calculator-form h2 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--dashboard-bg);
+    box-shadow: 0 0 0 2px rgba(74, 74, 244, 0.1);
+}
+
+.input-group input.invalid {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+}
+
+.calculate-result {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--dashboard-bg);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.calculate-result:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(74, 74, 244, 0.2);
+}
+
+.calculate-result:active {
+    transform: translateY(0);
+}
+
+.result {
+    background-color: var(--primary-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.result h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.result p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.result p:last-child {
+    margin-bottom: 0;
 }
 
 /* Responsive Design */
@@ -347,5 +474,17 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .template-grid {
+        grid-template-columns: 1fr;
     }
 }
