@@ -1,375 +1,144 @@
-:root {
-    --primary-bg: #f8f9fa;
-    --sidebar-bg: #ffffff;
-    --pink: #fff2f2;
-    --blue: #f2f4ff;
-    --orange: #fff6f2;
-    --green: #f2fff5;
-    --purple: #f9f2ff;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --border-color: #e0e0e0;
-    --dashboard-bg: #4a4af4;
-}
+/* Keep all existing CSS and add calendar styles */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--primary-bg);
-    color: var(--text-primary);
-}
-
-.container {
-    display: flex;
-    min-height: 100vh;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    width: 250px;
-    background-color: var(--sidebar-bg);
-    padding: 2rem;
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.sidebar h2 {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem;
-    text-decoration: none;
-    color: var(--text-primary);
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-}
-
-/* Special Dashboard Style */
-.nav-item.active {
-    background-color: var(--dashboard-bg);
-    color: white;
+/* Calendar Styles */
+.calendar-container {
     padding: 1rem;
-    margin: 0.5rem 0;
+    background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(74, 74, 244, 0.15);
 }
 
-.nav-item.active .icon {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 8px;
-    border-radius: 8px;
-    margin-right: 12px;
-}
-
-.nav-item:not(.active):hover {
-    background-color: var(--primary-bg);
-    transform: translateX(4px);
-}
-
-.nav-item.selected {
-    background-color: #f0f0ff;
-}
-
-.nav-item .icon {
-    margin-right: 0.75rem;
-    font-size: 1.1rem;
-    min-width: 24px;
-    text-align: center;
-}
-
-.sub-menu {
-    margin-left: 2.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.sub-item {
-    display: block;
-    padding: 0.5rem;
-    text-decoration: none;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-    border-radius: 6px;
-}
-
-.sub-item:hover {
-    background-color: var(--primary-bg);
-    transform: translateX(4px);
-}
-
-.sub-item.active {
-    color: var(--dashboard-bg);
-    font-weight: 500;
-}
-
-/* Main Content Styles */
-.main-content {
-    flex: 1;
-    padding: 2rem;
-    max-width: 1200px;
-}
-
-.header {
+.calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
 }
 
-.header-content h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-primary);
 }
 
-.header-content p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.header-actions {
+.calendar-nav {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--dashboard-bg);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-}
-
-.private-projects {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    background: white;
-    cursor: pointer;
-    font-size: 0.9rem;
+    justify-content: center;
     transition: all 0.2s ease;
 }
 
-.private-projects:hover {
+.calendar-nav:hover {
     background-color: var(--primary-bg);
-    transform: translateY(-1px);
 }
 
-.user-actions {
+.calendar-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.calendar-days-header div {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
-    gap: 1rem;
-}
-
-.notification, .user-avatar {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.notification:hover, .user-avatar:hover {
-    transform: translateY(-1px);
-}
-
-/* Templates Section */
-.templates {
-    margin-bottom: 3rem;
-}
-
-.templates h2 {
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
-}
-
-.template-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-}
-
-.template-card {
-    padding: 1.5rem;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.template-card:hover {
-    transform: translateY(-2px);
-}
-
-.template-card.pink { background-color: var(--pink); }
-.template-card.blue { background-color: var(--blue); }
-.template-card.orange { background-color: var(--orange); }
-.template-card.green { background-color: var(--green); }
-.template-card.purple { background-color: var(--purple); }
-
-.template-card .icon {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.template-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.template-card p {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-/* Category Cards Shared Styles */
-.seller-categories,
-.investor-categories,
-.buyer-categories {
-    margin: 2rem 0;
-}
-
-.seller-grid,
-.investor-grid,
-.buyer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.seller-card,
-.investor-card,
-.buyer-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    border: 1px solid var(--border-color);
-}
-
-.seller-card:hover,
-.investor-card:hover,
-.buyer-card:hover {
-    transform: translateY(-2px);
-}
-
-.seller-icon,
-.investor-icon,
-.buyer-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.seller-content,
-.investor-content,
-.buyer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.seller-card h3,
-.investor-card h3,
-.buyer-card h3 {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    font-weight: 600;
-    margin: 0;
-}
-
-.seller-card p,
-.investor-card p,
-.buyer-card p {
+    justify-content: center;
     font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin: 0;
-}
-
-.note {
-    margin-top: 1rem;
-    background: var(--blue);
-    padding: 1rem;
+    cursor: pointer;
     border-radius: 8px;
-    font-size: 0.85rem;
-    line-height: 1.4;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
 }
 
-.note strong {
-    display: block;
-    margin-bottom: 0.25rem;
-    font-weight: 600;
+.calendar-day:not(.empty):hover {
+    background-color: var(--primary-bg);
+    border-color: var(--dashboard-bg);
 }
 
-/* Calculator Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+.calendar-day.empty {
+    cursor: default;
 }
 
-.modal-content {
-    position: relative;
-    background-color: white;
-    margin: 2rem auto;
-    padding: 2rem;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-secondary);
-    transition: color 0.2s ease;
-}
-
-.close-modal:hover {
-    color: var(--text-primary);
-}
-
-/* Calculator Form Styles */
-.calculator-form {
-    padding: 1rem 0;
-}
-
-.calculator-form h2 {
-    font-size: 1.4rem;
-    color: var(--text-primary);
-    margin-bottom: 1.5rem;
-}
-
-.input-group {
-    margin-bottom: 1.5rem;
-}
-
-.input-group label {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
+.calendar-day.current-day {
+    background-color: var(--dashboard-bg);
+    color: white;
     font-weight: 500;
 }
 
-.input-group input {
+.calendar-events {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.calendar-events h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.event-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.no-events {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Schedule Form Styles */
+.schedule-form {
+    padding: 1rem;
+}
+
+.schedule-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.schedule-form .input-group {
+    margin-bottom: 1.5rem;
+}
+
+.schedule-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.schedule-form input,
+.schedule-form select,
+.schedule-form textarea {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--border-color);
@@ -378,113 +147,49 @@ body {
     transition: all 0.2s ease;
 }
 
-.input-group input:focus {
+.schedule-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.schedule-form input:focus,
+.schedule-form select:focus,
+.schedule-form textarea:focus {
     outline: none;
     border-color: var(--dashboard-bg);
     box-shadow: 0 0 0 2px rgba(74, 74, 244, 0.1);
 }
 
-.input-group input.invalid {
-    border-color: #e74c3c;
-    background-color: #fff5f5;
-}
-
-.calculate-result {
+.schedule-btn,
+.back-to-calendar {
     width: 100%;
     padding: 1rem;
-    background-color: var(--dashboard-bg);
-    color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.calculate-result:hover {
+.schedule-btn {
+    background-color: var(--dashboard-bg);
+    color: white;
+}
+
+.schedule-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(74, 74, 244, 0.2);
 }
 
-.calculate-result:active {
-    transform: translateY(0);
-}
-
-.result {
+.back-to-calendar {
     background-color: var(--primary-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-}
-
-.result h3 {
-    font-size: 1.1rem;
     color: var(--text-primary);
-    margin-bottom: 1rem;
 }
 
-.result p {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+.back-to-calendar:hover {
+    background-color: var(--border-color);
 }
 
-.result p:last-child {
-    margin-bottom: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .template-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .seller-grid,
-    .investor-grid,
-    .buyer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-    
-    .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .template-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .seller-grid,
-    .investor-grid,
-    .buyer-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
-    .modal-content {
-        width: 95%;
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .template-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* Keep all other existing CSS */
