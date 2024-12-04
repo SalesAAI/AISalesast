@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="menu">
+                <h2>MENU</h2>
+                <nav>
+                    <a href="#" class="nav-item active">
+                        <span class="icon">🏠</span>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">📁</span>
+                        Conversations
+                    </a>
+                    <div class="sub-menu">
+                        <a href="#" class="sub-item">Home Seller</a>
+                        <a href="#" class="sub-item active">Investors</a>
+                        <a href="#" class="sub-item">Home Buyer</a>
+                    </div>
+                    <a href="#" class="nav-item">
+                        <span class="icon">📊</span>
+                        Statistics
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">👥</span>
+                        Contacts
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">📅</span>
+                        Calendar
+                    </a>
+                </nav>
+            </div>
+            <div class="general">
+                <h2>GENERAL</h2>
+                <nav>
+                    <a href="#" class="nav-item">
+                        <span class="icon">⚙️</span>
+                        Settings
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">❓</span>
+                        Support
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="icon">↪️</span>
+                        Log out
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div class="header-content">
+                    <h1>My Projects</h1>
+                    <p>Let's get started and take the first step towards becoming a more productive and organized you!</p>
+                </div>
+                <div class="header-actions">
+                    <button class="private-projects">🔒 Private Projects</button>
+                    <div class="user-actions">
+                        <span class="notification">🔔</span>
+                        <span class="user-avatar">👤</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Templates Section with Calculator Boxes -->
+            <section id="templates" class="templates">
+                <h2>Templates</h2>
+                <div class="template-grid">
+                    <div class="template-card pink calculator-card" data-calculator="arv">
+                        <span class="icon">📝</span>
+                        <h3>ARV</h3>
+                        <p>(After Repair Value) is the estimated market value of a property after all repairs and renovations are completed.</p>
+                    </div>
+                    <div class="template-card blue calculator-card" data-calculator="mao">
+                        <span class="icon">💰</span>
+                        <h3>MAO</h3>
+                        <p>Maximum Allowable Offer: MAO = (ARV × 70%) - Repair Costs. This determines the highest price an investor should pay.</p>
+                    </div>
+                    <div class="template-card orange calculator-card" data-calculator="coc">
+                        <span class="icon">💵</span>
+                        <h3>CoC</h3>
+                        <p>Cash-on-Cash Return: CoC = (Annual Cash Flow / Cash Invested) × 100. Measures the return on actual cash invested.</p>
+                    </div>
+                    <div class="template-card green calculator-card" data-calculator="capRate">
+                        <span class="icon">📊</span>
+                        <h3>Cap Rate</h3>
+                        <p>Capitalization Rate: Cap Rate = (Net Operating Income / Property Value) × 100. Used to evaluate profitability.</p>
+                    </div>
+                    <div class="template-card purple calculator-card" data-calculator="grm">
+                        <span class="icon">🏢</span>
+                        <h3>GRM</h3>
+                        <p>Gross Rent Multiplier: GRM = Property Price / Gross Annual Rental Income. Helps compare rental properties.</p>
+                    </div>
+                    <div class="template-card pink calculator-card" data-calculator="dscr">
+                        <span class="icon">📈</span>
+                        <h3>DSCR</h3>
+                        <p>Debt Service Coverage Ratio: DSCR = Net Operating Income / Annual Debt Payments. Used by lenders to assess coverage.</p>
+                    </div>
+                    <div class="template-card blue calculator-card" data-calculator="ltv">
+                        <span class="icon">🏦</span>
+                        <h3>LTV</h3>
+                        <p>Loan-to-Value Ratio: LTV = (Loan Amount / Property Value) × 100. Measures lending risk; lower is better.</p>
+                    </div>
+                    <div class="template-card orange calculator-card" data-calculator="ber">
+                        <span class="icon">⚖️</span>
+                        <h3>BER</h3>
+                        <p>Break-Even Ratio: BER = (Operating Expenses + Debt Payments) / Gross Income × 100. Shows income needed for expenses.</p>
+                    </div>
+                    <div class="template-card green calculator-card" data-calculator="roi">
+                        <span class="icon">📊</span>
+                        <h3>ROI</h3>
+                        <p>Return on Investment: ROI = (Net Profit / Total Investment) × 100. A general measure of profitability.</p>
+                    </div>
+                    <div class="template-card purple calculator-card" data-calculator="vacancyRate">
+                        <span class="icon">🏠</span>
+                        <h3>Vacancy Rate</h3>
+                        <p>Vacancy Rate = (Vacant Units / Total Units) × 100. Helps evaluate potential income loss in rental properties.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Home Seller Categories Section -->
+            <section id="homeSeller" class="seller-categories" style="display: none;">
+                <div class="seller-grid">
+                    <div class="seller-card">
+                        <div class="seller-icon">↗️</div>
+                        <div class="seller-content">
+                            <h3>The Reluctant Seller</h3>
+                            <p>Many homeowners initially claim they're not interested to avoid feeling pressured or committing too early. They might still be considering selling but haven't fully made up their minds.</p>
+                        </div>
+                    </div>
+                    <div class="seller-card">
+                        <div class="seller-icon">🏢</div>
+                        <div class="seller-content">
+                            <h3>Seller with Unrealistic Expectations</h3>
+                            <p>Many homeowners overvalue their property based on emotional attachment, outdated comparisons, or recent improvements. Helping them understand the market is a frequent challenge.</p>
+                        </div>
+                    </div>
+                    <div class="seller-card">
+                        <div class="seller-icon">🏠</div>
+                        <div class="seller-content">
+                            <h3>The Skeptical Seller</h3>
+                            <p>A significant number of sellers are wary due to scams, bad experiences, or fear of being lowballed. Building trust is crucial in overcoming this hesitation.</p>
+                        </div>
+                    </div>
+                    <div class="seller-card">
+                        <div class="seller-icon">⏰</div>
+                        <div class="seller-content">
+                            <h3>The Time-Pressed Seller</h3>
+                            <p>Life events like job relocations, family changes, or financial pressures create urgency, making these sellers more likely to respond if you can provide a quick solution.</p>
+                        </div>
+                    </div>
+                    <div class="seller-card">
+                        <div class="seller-icon">🏘️</div>
+                        <div class="seller-content">
+                            <h3>The Inherited Property Seller</h3>
+                            <p>Inheriting properties is common, and many people find themselves burdened by unwanted real estate. This group often doesn't want to maintain, rent, or deal with inherited homes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investor Categories Section -->
+            <section id="investors" class="investor-categories" style="display: none;">
+                <div class="investor-grid">
+                    <div class="investor-card">
+                        <div class="investor-icon">🏠</div>
+                        <div class="investor-content">
+                            <h3>First-Time Investor</h3>
+                            <p>Many people want to start investing in real estate but are unsure where to begin.</p>
+                            <div class="note">
+                                <strong>note:</strong> Educate them about the benefits of investing, guide them toward starter properties, and build confidence in your expertise.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="investor-card">
+                        <div class="investor-icon">💰</div>
+                        <div class="investor-content">
+                            <h3>The Cash Buyer</h3>
+                            <p>Experienced investors with liquid cash often look for quick, high-return deals and prefer to move fast.</p>
+                            <div class="note">
+                                <strong>note:</strong> Position yourself as someone who can consistently offer them undervalued properties or distressed sales.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="investor-card">
+                        <div class="investor-icon">🔄</div>
+                        <div class="investor-content">
+                            <h3>The Flipper</h3>
+                            <p>Many investors focus on buying properties they can renovate and sell for a profit. They prioritize neighborhoods with strong resale value and properties with high upside potential.</p>
+                            <div class="note">
+                                <strong>note:</strong> Present them with data-driven options and highlight properties with solid ROI potential.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="investor-card">
+                        <div class="investor-icon">🏢</div>
+                        <div class="investor-content">
+                            <h3>The Buy-and-Hold Investor</h3>
+                            <p>These investors look for rental properties to generate passive income and are focused on long-term profitability.</p>
+                            <div class="note">
+                                <strong>note:</strong> Emphasize the stability of passive income, provide cash flow projections, and identify properties with strong rental markets.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="investor-card">
+                        <div class="investor-icon">📊</div>
+                        <div class="investor-content">
+                            <h3>The Risk-Averse Investor</h3>
+                            <p>Some investors are hesitant due to market uncertainty or fear of losing money, especially during economic downturns.</p>
+                            <div class="note">
+                                <strong>note:</strong> Reassure them with market data, highlight low-risk options like multi-family units or stabilized rental markets, and demonstrate your ability to navigate challenges.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Home Buyer Categories Section -->
+            <section id="homeBuyer" class="buyer-categories" style="display: none;">
+                <div class="buyer-grid">
+                    <div class="buyer-card">
+                        <div class="buyer-icon">🏠</div>
+                        <div class="buyer-content">
+                            <h3>The First-Time Home Buyer</h3>
+                            <p>Many buyers are entering the market for the first time and feel overwhelmed by the process. They are unsure about financing, finding the right property, or negotiating.</p>
+                            <div class="note">
+                                <strong>note:</strong> Educate them about the process, build confidence, and guide them toward pre-approval or a property search.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buyer-card">
+                        <div class="buyer-icon">💰</div>
+                        <div class="buyer-content">
+                            <h3>The Budget-Conscious Buyer</h3>
+                            <p>Affordability is a major concern for many buyers, especially in competitive markets. They want the best value for their money but may be hesitant to stretch their budget.</p>
+                            <div class="note">
+                                <strong>note:</strong> Help them understand what's available within their budget or discuss financing options that could expand their range.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buyer-card">
+                        <div class="buyer-icon">✨</div>
+                        <div class="buyer-content">
+                            <h3>The "Dream Home" Buyer</h3>
+                            <p>Some buyers have very specific wants, often expecting luxury features or a perfect location within a modest budget.</p>
+                            <div class="note">
+                                <strong>note:</strong> Help them prioritize needs versus wants and explore realistic compromises.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buyer-card">
+                        <div class="buyer-icon">⚡</div>
+                        <div class="buyer-content">
+                            <h3>The Ready-to-Buy Buyer</h3>
+                            <p>Motivated buyers who have done their research and are ready to make offers often dominate the market. They may already be pre-approved and need help identifying the right property.</p>
+                            <div class="note">
+                                <strong>note:</strong> Position yourself as the agent who can act quickly and provide market insights to help them secure a home.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buyer-card">
+                        <div class="buyer-icon">🤔</div>
+                        <div class="buyer-content">
+                            <h3>The Skeptical Buyer</h3>
+                            <p>Buyers wary of scams, hidden fees, or market downturns often hesitate to proceed. They're looking for a trustworthy partner to guide them.</p>
+                            <div class="note">
+                                <strong>note:</strong> Provide data-driven insights about the market and demonstrate the long-term value of buying now.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Calculator Modal -->
+    <div id="calculatorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <!-- Calculator forms will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+:root {
+    --primary-bg: #f8f9fa;
+    --sidebar-bg: #ffffff;
+    --pink: #fff2f2;
+    --blue: #f2f4ff;
+    --orange: #fff6f2;
+    --green: #f2fff5;
+    --purple: #f9f2ff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --dashboard-bg: #4a4af4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    padding: 2rem;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebar h2 {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Special Dashboard Style */
+.nav-item.active {
+    background-color: var(--dashboard-bg);
+    color: white;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(74, 74, 244, 0.15);
+}
+
+.nav-item.active .icon {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+.nav-item:not(.active):hover {
+    background-color: var(--primary-bg);
+}
+
+.nav-item.selected {
+    background-color: #f0f0ff;
+}
+
+.nav-item .icon {
+    margin-right: 0.75rem;
+}
+
+.sub-menu {
+    margin-left: 2rem;
+}
+
+.sub-item {
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.sub-item.active {
+    color: #4a4af4;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.header-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.private-projects {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Templates Section */
+.templates {
+    margin-bottom: 3rem;
+}
+
+.templates h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.template-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.template-card:hover {
+    transform: translateY(-2px);
+}
+
+.template-card.pink { background-color: var(--pink); }
+.template-card.blue { background-color: var(--blue); }
+.template-card.orange { background-color: var(--orange); }
+.template-card.green { background-color: var(--green); }
+.template-card.purple { background-color: var(--purple); }
+
+.template-card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.template-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.template-card p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Category Cards Shared Styles */
+.seller-categories,
+.investor-categories,
+.buyer-categories {
+    margin: 2rem 0;
+}
+
+.seller-grid,
+.investor-grid,
+.buyer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.seller-card,
+.investor-card,
+.buyer-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+.seller-card:hover,
+.investor-card:hover,
+.buyer-card:hover {
+    transform: translateY(-2px);
+}
+
+.seller-icon,
+.investor-icon,
+.buyer-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.seller-content,
+.investor-content,
+.buyer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.seller-card h3,
+.investor-card h3,
+.buyer-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
+}
+
+.seller-card p,
+.investor-card p,
+.buyer-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.note {
+    margin-top: 1rem;
+    background: var(--blue);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.note strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+/* Calculator Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 2rem auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .template-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .seller-grid,
+    .investor-grid,
+    .buyer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .template-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .seller-grid,
+    .investor-grid,
+    .buyer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
